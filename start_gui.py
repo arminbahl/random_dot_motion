@@ -15,15 +15,12 @@ if __name__ == "__main__":
     import sys
     import PyQt5
     from PyQt5 import QtCore, QtGui, uic, QtWidgets
-    from PyQt5.QtWidgets import QWidget
 
     if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
         PyQt5.QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
 
     if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
         PyQt5.QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
-
-
 
     class GUI_Dialog(QtWidgets.QDialog):
         def __init__(self, parent=None):
@@ -33,8 +30,6 @@ if __name__ == "__main__":
             path = os.path.dirname(__file__)
 
             uic.loadUi(os.path.join(path, "gui.ui"), self)
-
-            #self.pushButton_camera1_start.clicked.connect(self.pushButton_camera1_start_clicked)
 
             self.spinBox_window_properties_x.setValue(self.shared.window_properties_x.value)
             self.spinBox_window_properties_y.setValue(self.shared.window_properties_y.value)
@@ -59,17 +54,15 @@ if __name__ == "__main__":
             self.doubleSpinBox_stimulus_properties_lifetime_of_dots.valueChanged.connect(self.doubleSpinBox_stimulus_properties_lifetime_of_dots_valueChanged)
             self.doubleSpinBox_stimulus_properties_direction_of_dots.valueChanged.connect(self.doubleSpinBox_stimulus_properties_direction_of_dots_valueChanged)
 
-            self.update_gui_timer = QtCore.QTimer()
-            self.update_gui_timer.timeout.connect(self.update_gui)
-            self.update_gui_timer.start(20)
-
             self.shared.window_properties_update_requested.value = 1
 
         def doubleSpinBox_stimulus_properties_size_of_dots_valueChanged(self):
             self.shared.stimulus_properties_size_of_dots.value = self.doubleSpinBox_stimulus_properties_size_of_dots.value()
+            self.shared.stimulus_properties_update_requested.value = 1
 
         def spinBox_stimulus_properties_number_of_dots_valueChanged(self):
             self.shared.stimulus_properties_number_of_dots.value = self.spinBox_stimulus_properties_number_of_dots.value()
+            self.shared.stimulus_properties_update_requested.value = 1
 
         def doubleSpinBox_stimulus_properties_speed_of_dots_valueChanged(self):
             self.shared.stimulus_properties_speed_of_dots.value = self.doubleSpinBox_stimulus_properties_speed_of_dots.value()
@@ -99,16 +92,6 @@ if __name__ == "__main__":
         def spinBox_window_properties_height_valueChanged(self):
             self.shared.window_properties_height.value = self.spinBox_window_properties_height.value()
             self.shared.window_properties_update_requested.value = 1
-
-        def pushButton_camera1_start_clicked(self):
-            if self.shared.camera_currently_recording[0].value == 0:
-                self.shared.camera_start_recording_requested[0].value = 1
-            else:
-                self.shared.camera_stop_recording_requested[0].value = 1
-
-
-        def update_gui(self):
-            pass
 
         def closeEvent(self, event):
             self.shared.running.value = 0

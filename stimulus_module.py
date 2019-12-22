@@ -140,15 +140,15 @@ class MyApp(ShowBase):
             random_vector = np.random.randint(100, size=10000)
             self.coherent_change_vector_ind = np.where(random_vector < self.shared.stimulus_properties_coherence_of_dots.value)
 
+            ######
+            # Update the shader variables
+            self.circles.setShaderInput("number_of_dots", self.shared.stimulus_properties_number_of_dots.value)
+            self.circles.setShaderInput("size_of_dots", self.shared.stimulus_properties_size_of_dots.value)
+
         #######
         # Continously update the dot stimulus
         dt = task.time - self.last_time
         self.last_time = task.time
-
-        ######
-        # Update the shader variables
-        self.circles.setShaderInput("number_of_dots", self.shared.stimulus_properties_number_of_dots.value)
-        self.circles.setShaderInput("size_of_dots", self.shared.stimulus_properties_size_of_dots.value)
 
         #####
         self.dots_position[0, :, 0][self.coherent_change_vector_ind] += np.cos(self.shared.stimulus_properties_direction_of_dots.value*np.pi/180) * \
@@ -161,7 +161,7 @@ class MyApp(ShowBase):
         # Randomly redraw dot with a short lifetime
         k = np.random.random(10000)
         if self.shared.stimulus_properties_lifetime_of_dots.value == 0:
-            ind = np.where(k >= 0)
+            ind = np.where(k >= 0)[0]
         else:
             ind = np.where(k < dt / self.shared.stimulus_properties_lifetime_of_dots.value)[0]
 
