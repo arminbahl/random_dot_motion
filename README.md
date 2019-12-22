@@ -7,7 +7,7 @@ motion direction, can be setup in real-time. The framework is designed in such a
 additional parallel modules. For example, one might add a module that tracks the position and orientation of a freely swimming 
 larval zebrafish or a freely walking _Drosophila_, and then make certain stimulus features dependent on these measured behavioral features.
 
-The display of visual stimuli is based on the python-friendly gaming engine [Panda3d](https://www.panda3d.org/). 
+The display of visual stimuli is based on the python-friendly gaming engine [Panda3D](https://www.panda3d.org/). 
 I use vertex shaders to move and resize dots. While Panda3D generally supports all platforms, I did not manage to use 
 shaders on platforms others than Windows. Please let me know if you get it to run on Linux or MacOS.
 
