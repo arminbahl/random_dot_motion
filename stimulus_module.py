@@ -15,6 +15,7 @@ dot_motion_coherence_shader = [
         in vec2 p3d_MultiTexCoord0;
         uniform int number_of_dots;
         uniform float size_of_dots;
+        uniform float radius;
         
         out float dot_color;
 
@@ -34,7 +35,7 @@ dot_motion_coherence_shader = [
 
             newvertex = p3d_Vertex;
 
-            if (dot_x*dot_x + dot_y*dot_y > 1/1.4*1/1.4 || dot_i > number_of_dots) { // only plot a certain number of dots in a circle
+            if (dot_x*dot_x + dot_y*dot_y > radius*radius || dot_i > number_of_dots) { // only plot a certain number of dots in a circle
                 newvertex[0] = 0.0;
                 newvertex[1] = 0.0;
                 newvertex[2] = 0.0;
@@ -76,7 +77,7 @@ class MyApp(ShowBase):
         ############
         # Update the lense
         self.disableMouse()
-        self.setBackgroundColor(0, 0, 0, 1)
+
 
         ############
         # Compile the motion shader
@@ -87,6 +88,10 @@ class MyApp(ShowBase):
         self.circles.reparentTo(self.render)
         self.circles.setShaderInput("number_of_dots", self.shared.stimulus_properties_number_of_dots.value)
         self.circles.setShaderInput("size_of_dots", self.shared.stimulus_properties_size_of_dots.value)
+        self.circles.setShaderInput("radius", self.shared.window_properties_radius.value)
+        self.setBackgroundColor(self.shared.window_properties_background.value,
+                                self.shared.window_properties_background.value,
+                                self.shared.window_properties_background.value, 1)
 
         self.dummytex = Texture("dummy texture")
         self.dummytex.setup2dTexture(10000, 1, Texture.T_float, Texture.FRgb32)
@@ -101,7 +106,7 @@ class MyApp(ShowBase):
         self.dots_position = np.empty((1, 10000, 3)).astype(np.float32)
         self.dots_position[0, :, 0] = 2*np.random.random(10000).astype(np.float32) - 1 # x
         self.dots_position[0, :, 1] = 2*np.random.random(10000).astype(np.float32) - 1 # y
-        self.dots_position[0, :, 2] = np.random.randint(0, 3, 10000).astype(np.float32)*0 + 1  # 0 will be black, 1, will be white, 2 will be hidden
+        self.dots_position[0, :, 2] = np.ones(10000)*self.shared.stimulus_properties_brightness_of_dots.value
 
         memoryview(self.dummytex.modify_ram_image())[:] = self.dots_position.tobytes()
 
@@ -133,6 +138,12 @@ class MyApp(ShowBase):
                                      self.shared.window_properties_width.value)
 
             self.cam.node().setLens(self.lens)
+
+            self.setBackgroundColor(self.shared.window_properties_background.value,
+                                    self.shared.window_properties_background.value,
+                                    self.shared.window_properties_background.value, 1)
+
+            self.circles.setShaderInput("radius", self.shared.window_properties_radius.value)
 
         if self.shared.stimulus_properties_update_requested.value == 1:
             self.shared.stimulus_properties_update_requested.value = 0
@@ -167,7 +178,7 @@ class MyApp(ShowBase):
 
         self.dots_position[0, :, 0][ind] = 2 * np.random.random(len(ind)).astype(np.float32) - 1  # x
         self.dots_position[0, :, 1][ind] = 2 * np.random.random(len(ind)).astype(np.float32) - 1  # y
-        self.dots_position[0, :, 2][ind] = np.random.randint(0, 2, len(ind)).astype(np.float32)*0 + 1  # 0 will be black, 1, will be white,  # y
+        self.dots_position[0, :, 2] = np.ones(10000)*self.shared.stimulus_properties_brightness_of_dots.value
 
         # Wrap them
         self.dots_position[0, :, 0] = (self.dots_position[0, :, 0] + 1) % 2 - 1

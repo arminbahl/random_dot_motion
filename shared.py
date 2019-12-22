@@ -11,6 +11,9 @@ class Shared():
         self.window_properties_y = Value('i', 0)
         self.window_properties_width = Value('i', 800)
         self.window_properties_height = Value('i', 800)
+        self.window_properties_background = Value('d', 0)
+        self.window_properties_radius = Value('d', 1.4)
+
         self.window_properties_update_requested = Value('b', 0)
 
         self.stimulus_properties_number_of_dots = Value('i', 1000)
@@ -19,6 +22,8 @@ class Shared():
         self.stimulus_properties_direction_of_dots = Value('d', 0.0)
         self.stimulus_properties_coherence_of_dots = Value('d', 50)
         self.stimulus_properties_lifetime_of_dots = Value('d', 0.2)
+        self.stimulus_properties_brightness_of_dots = Value('d', 1.0)
+
         self.stimulus_properties_update_requested = Value('b', 0)
 
         self.running = Value('b', 1)
@@ -30,6 +35,8 @@ class Shared():
             self.window_properties_y.value = values["window_properties_y"]
             self.window_properties_width.value = values["window_properties_width"]
             self.window_properties_height.value = values["window_properties_height"]
+            self.window_properties_radius.value = values["window_properties_radius"]
+            self.window_properties_background.value = values["window_properties_background"]
 
             self.stimulus_properties_number_of_dots.value = values["stimulus_properties_number_of_dots"]
             self.stimulus_properties_size_of_dots.value = values["stimulus_properties_size_of_dots"]
@@ -37,6 +44,8 @@ class Shared():
             self.stimulus_properties_direction_of_dots.value = values["stimulus_properties_direction_of_dots"]
             self.stimulus_properties_coherence_of_dots.value = values["stimulus_properties_coherence_of_dots"]
             self.stimulus_properties_lifetime_of_dots.value = values["stimulus_properties_lifetime_of_dots"]
+            self.stimulus_properties_brightness_of_dots.value = values["stimulus_properties_brightness_of_dots"]
+
 
         except Exception as e:
             print(e)
@@ -50,6 +59,8 @@ class Shared():
             values["window_properties_y"] = self.window_properties_y.value
             values["window_properties_width"] = self.window_properties_width.value
             values["window_properties_height"] = self.window_properties_height.value
+            values["window_properties_radius"] = self.window_properties_radius.value
+            values["window_properties_background"] = self.window_properties_background.value
 
             values["stimulus_properties_number_of_dots"] = self.stimulus_properties_number_of_dots.value
             values["stimulus_properties_size_of_dots"] = self.stimulus_properties_size_of_dots.value
@@ -57,6 +68,7 @@ class Shared():
             values["stimulus_properties_coherence_of_dots"] = self.stimulus_properties_coherence_of_dots.value
             values["stimulus_properties_direction_of_dots"] = self.stimulus_properties_direction_of_dots.value
             values["stimulus_properties_lifetime_of_dots"] = self.stimulus_properties_lifetime_of_dots.value
+            values["stimulus_properties_brightness_of_dots"] = self.stimulus_properties_brightness_of_dots.value
 
             pickle.dump(values, open("values.pickle", "wb"))
         except Exception as e:

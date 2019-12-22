@@ -35,17 +35,23 @@ if __name__ == "__main__":
             self.spinBox_window_properties_y.setValue(self.shared.window_properties_y.value)
             self.spinBox_window_properties_width.setValue(self.shared.window_properties_width.value)
             self.spinBox_window_properties_height.setValue(self.shared.window_properties_height.value)
+            self.doubleSpinBox_window_properties_radius.setValue(self.shared.window_properties_radius.value)
+            self.doubleSpinBox_window_properties_background.setValue(self.shared.window_properties_background.value)
+
             self.spinBox_stimulus_properties_number_of_dots.setValue(self.shared.stimulus_properties_number_of_dots.value)
             self.doubleSpinBox_stimulus_properties_size_of_dots.setValue(self.shared.stimulus_properties_size_of_dots.value)
             self.doubleSpinBox_stimulus_properties_speed_of_dots.setValue(self.shared.stimulus_properties_speed_of_dots.value)
             self.doubleSpinBox_stimulus_properties_lifetime_of_dots.setValue(self.shared.stimulus_properties_lifetime_of_dots.value)
             self.doubleSpinBox_stimulus_properties_coherence_of_dots.setValue(self.shared.stimulus_properties_coherence_of_dots.value)
             self.doubleSpinBox_stimulus_properties_direction_of_dots.setValue(self.shared.stimulus_properties_direction_of_dots.value)
+            self.doubleSpinBox_stimulus_properties_brightness_of_dots.setValue(self.shared.stimulus_properties_brightness_of_dots.value)
 
             self.spinBox_window_properties_x.valueChanged.connect(self.spinBox_window_properties_x_valueChanged)
             self.spinBox_window_properties_y.valueChanged.connect(self.spinBox_window_properties_y_valueChanged)
             self.spinBox_window_properties_width.valueChanged.connect(self.spinBox_window_properties_width_valueChanged)
             self.spinBox_window_properties_height.valueChanged.connect(self.spinBox_window_properties_height_valueChanged)
+            self.doubleSpinBox_window_properties_radius.valueChanged.connect(self.doubleSpinBox_window_properties_radius_valueChanged)
+            self.doubleSpinBox_window_properties_background.valueChanged.connect(self.doubleSpinBox_window_properties_background_valueChanged)
 
             self.spinBox_stimulus_properties_number_of_dots.valueChanged.connect(self.spinBox_stimulus_properties_number_of_dots_valueChanged)
             self.doubleSpinBox_stimulus_properties_size_of_dots.valueChanged.connect(self.doubleSpinBox_stimulus_properties_size_of_dots_valueChanged)
@@ -53,6 +59,7 @@ if __name__ == "__main__":
             self.doubleSpinBox_stimulus_properties_coherence_of_dots.valueChanged.connect(self.doubleSpinBox_stimulus_properties_coherence_of_dots_valueChanged)
             self.doubleSpinBox_stimulus_properties_lifetime_of_dots.valueChanged.connect(self.doubleSpinBox_stimulus_properties_lifetime_of_dots_valueChanged)
             self.doubleSpinBox_stimulus_properties_direction_of_dots.valueChanged.connect(self.doubleSpinBox_stimulus_properties_direction_of_dots_valueChanged)
+            self.doubleSpinBox_stimulus_properties_brightness_of_dots.valueChanged.connect(self.doubleSpinBox_stimulus_properties_brightness_of_dots_valueChanged)
 
             self.shared.window_properties_update_requested.value = 1
 
@@ -77,6 +84,9 @@ if __name__ == "__main__":
         def doubleSpinBox_stimulus_properties_direction_of_dots_valueChanged(self):
             self.shared.stimulus_properties_direction_of_dots.value = self.doubleSpinBox_stimulus_properties_direction_of_dots.value()
 
+        def doubleSpinBox_stimulus_properties_brightness_of_dots_valueChanged(self):
+            self.shared.stimulus_properties_brightness_of_dots.value = self.doubleSpinBox_stimulus_properties_brightness_of_dots.value()
+
         def spinBox_window_properties_x_valueChanged(self):
             self.shared.window_properties_x.value = self.spinBox_window_properties_x.value()
             self.shared.window_properties_update_requested.value = 1
@@ -91,6 +101,14 @@ if __name__ == "__main__":
 
         def spinBox_window_properties_height_valueChanged(self):
             self.shared.window_properties_height.value = self.spinBox_window_properties_height.value()
+            self.shared.window_properties_update_requested.value = 1
+
+        def doubleSpinBox_window_properties_radius_valueChanged(self):
+            self.shared.window_properties_radius.value = self.doubleSpinBox_window_properties_radius.value()
+            self.shared.window_properties_update_requested.value = 1
+
+        def doubleSpinBox_window_properties_background_valueChanged(self):
+            self.shared.window_properties_background.value = self.doubleSpinBox_window_properties_background.value()
             self.shared.window_properties_update_requested.value = 1
 
         def closeEvent(self, event):
