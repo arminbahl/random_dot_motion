@@ -1,5 +1,5 @@
-# Random dot motion - Control Center
-Welcome!
+# Random dot motion control center
+Welcome to the random dot motion control center!
 
 This set of python files provides a simple and easy-to-use toolbox for displaying random dot motion stimuli. It comes 
 with a convenient graphical user interface where important stimulus features, such as coherence, dot lifetime, or 
@@ -22,7 +22,7 @@ Then go to the Anaconda Prompt and create a new environment:
     conda install -c conda-forge scipy pyqt
     pip install panda3d
     
-Get the source code from the repository and start the graphical user interface:
+Get the source code from my github repository and start the graphical user interface:
 
     git clone https://github.com/arminbahl/random_dot_motion
     cd random_dot_python
@@ -30,7 +30,8 @@ Get the source code from the repository and start the graphical user interface:
 
 If you prefer a proper developer environment for editing and running code, I suggest [PyCharm](https://www.jetbrains.com/pycharm/).
 
-Once you start the program, you should see two windows, one displaying the visual stimulus and one that controls stimulus features.
+Once you start the program, you should see two windows, one displaying the visual stimulus and one that controls the 
+relevant features of the stimulus.
 ![Example image](example.png)
 
 If you have questions or suggestions, please let me know: [arminbahl@fas.harvard.edu](mailto:arminbahl@fas.harvard.edu)

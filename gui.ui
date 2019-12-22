@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Random dot motion - Control center</string>
+   <string>Random dot motion control center</string>
   </property>
   <property name="styleSheet">
    <string notr="true">color: white; background-color: rgb(20, 20, 20);</string>
