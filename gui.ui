@@ -357,7 +357,7 @@
      <string notr="true">background-color: rgb(100, 100, 100); color:white; border-style: outset; border-width: 1px;  border-color: rgb(50, 50, 50)</string>
     </property>
     <property name="decimals">
-     <number>3</number>
+     <number>1</number>
     </property>
     <property name="maximum">
      <double>100.000000000000000</double>
@@ -434,7 +434,7 @@
      <string notr="true">background-color: rgb(100, 100, 100); color:white; border-style: outset; border-width: 1px;  border-color: rgb(50, 50, 50)</string>
     </property>
     <property name="decimals">
-     <number>3</number>
+     <number>1</number>
     </property>
     <property name="minimum">
      <double>-360.000000000000000</double>
@@ -469,7 +469,7 @@
      <string notr="true">background-color: rgb(100, 100, 100); color:white; border-style: outset; border-width: 1px;  border-color: rgb(50, 50, 50)</string>
     </property>
     <property name="decimals">
-     <number>3</number>
+     <number>2</number>
     </property>
     <property name="maximum">
      <double>1.000000000000000</double>
