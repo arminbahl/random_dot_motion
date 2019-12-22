@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>485</width>
-    <height>154</height>
+    <width>486</width>
+    <height>180</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -367,6 +367,32 @@
      <double>360.000000000000000</double>
     </property>
    </widget>
+  </widget>
+  <widget class="QLabel" name="label_13">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>150</y>
+     <width>291</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>If you have an questions or suggestions, please contact me:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>150</y>
+     <width>141</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;a href='mailto:arminbahl@fas.harvard.edu?subject=Random dot motion&amp;body=Hey, I've got a quick question!'&gt;arminbahl@fas.harvard.edu&lt;/a&gt;</string>
+   </property>
   </widget>
  </widget>
  <tabstops>
