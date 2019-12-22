@@ -16,6 +16,7 @@ if __name__ == "__main__":
     import PyQt5
     from PyQt5 import QtCore, QtGui, uic, QtWidgets
 
+    # Some properties that one might need to set on high-res screens
     if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
         PyQt5.QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
 
@@ -61,11 +62,14 @@ if __name__ == "__main__":
             self.doubleSpinBox_stimulus_properties_direction_of_dots.valueChanged.connect(self.doubleSpinBox_stimulus_properties_direction_of_dots_valueChanged)
             self.doubleSpinBox_stimulus_properties_brightness_of_dots.valueChanged.connect(self.doubleSpinBox_stimulus_properties_brightness_of_dots_valueChanged)
 
-            self.shared.window_properties_update_requested.value = 1
+            # move the window to where it has been last time
+            self.move(self.shared.control_window_position_x.value,
+                      self.shared.control_window_position_y.value)
 
         def doubleSpinBox_stimulus_properties_size_of_dots_valueChanged(self):
             self.shared.stimulus_properties_size_of_dots.value = self.doubleSpinBox_stimulus_properties_size_of_dots.value()
             self.shared.stimulus_properties_update_requested.value = 1
+
 
         def spinBox_stimulus_properties_number_of_dots_valueChanged(self):
             self.shared.stimulus_properties_number_of_dots.value = self.spinBox_stimulus_properties_number_of_dots.value()
@@ -112,6 +116,9 @@ if __name__ == "__main__":
             self.shared.window_properties_update_requested.value = 1
 
         def closeEvent(self, event):
+            self.shared.control_window_position_x.value = self.pos().x()
+            self.shared.control_window_position_y.value = self.pos().y()
+
             self.shared.running.value = 0
             self.close()
 

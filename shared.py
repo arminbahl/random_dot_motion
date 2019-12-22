@@ -13,6 +13,8 @@ class Shared():
         self.window_properties_height = Value('i', 800)
         self.window_properties_background = Value('d', 0)
         self.window_properties_radius = Value('d', 1.4)
+        self.control_window_position_x = Value('i', 100)
+        self.control_window_position_y = Value('i', 100)
 
         self.window_properties_update_requested = Value('b', 0)
 
@@ -37,6 +39,8 @@ class Shared():
             self.window_properties_height.value = values["window_properties_height"]
             self.window_properties_radius.value = values["window_properties_radius"]
             self.window_properties_background.value = values["window_properties_background"]
+            self.control_window_position_x.value = values["control_window_position_x"]
+            self.control_window_position_y.value = values["control_window_position_y"]
 
             self.stimulus_properties_number_of_dots.value = values["stimulus_properties_number_of_dots"]
             self.stimulus_properties_size_of_dots.value = values["stimulus_properties_size_of_dots"]
@@ -61,6 +65,8 @@ class Shared():
             values["window_properties_height"] = self.window_properties_height.value
             values["window_properties_radius"] = self.window_properties_radius.value
             values["window_properties_background"] = self.window_properties_background.value
+            values["control_window_position_x"] = self.control_window_position_x.value
+            values["control_window_position_y"] = self.control_window_position_y.value
 
             values["stimulus_properties_number_of_dots"] = self.stimulus_properties_number_of_dots.value
             values["stimulus_properties_size_of_dots"] = self.stimulus_properties_size_of_dots.value

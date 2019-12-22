@@ -112,6 +112,7 @@ class MyApp(ShowBase):
 
         self.last_time = 0
         self.shared.stimulus_properties_update_requested.value = 1
+        self.shared.window_properties_update_requested.value = 1
 
         self.task_mgr.add(self.update_stimulus, "update_stimulus")
 
