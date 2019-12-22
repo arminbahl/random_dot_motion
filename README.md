@@ -25,7 +25,7 @@ Then go to the Anaconda Prompt and create a new environment:
 Get the source code from my github repository and start the graphical user interface:
 
     git clone https://github.com/arminbahl/random_dot_motion
-    cd random_dot_python
+    cd random_dot_motion
     python start_gui.py
 
 If you prefer a proper developer environment for editing and running code, I suggest [PyCharm](https://www.jetbrains.com/pycharm/).
