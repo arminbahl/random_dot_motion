@@ -9,7 +9,7 @@ larval zebrafish or a freely walking _Drosophila_, and then make certain stimulu
 
 The display of visual stimuli is based on the python-friendly gaming engine [Panda3D](https://www.panda3d.org/). 
 I use vertex shaders to move and resize dots. While Panda3D generally supports all platforms, I did not manage to use 
-shaders on platforms others than Windows. Please let me know if you get it to run on Linux or MacOS.
+shaders on MacOS. Windows and Linux should work.
 
 ## Installation
 Install the latest version of Python 3. I am using the Anaconda distribution.
