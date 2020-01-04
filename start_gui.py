@@ -17,8 +17,8 @@ if __name__ == "__main__":
     from PyQt5 import QtCore, QtGui, uic, QtWidgets
 
     # Some properties that one might need to set on high-res screens
-    #if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
-    #    PyQt5.QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
+    if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
+        PyQt5.QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
 
     if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
         PyQt5.QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
